@@ -4,7 +4,7 @@
 Please follow the steps to integrate payment request from your app
 
 ## Required Fields:
--  gateway endpoint : https://tecpay.in/checkout.php
+-  gateway endpoint : https://tecpay.in/connect.php
 -  order_id: your order id (it should be unique and atleast 10 character)
 -  pid: given merchant id
 -  purpose: purpose of payment (any string)
