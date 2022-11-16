@@ -7,16 +7,18 @@ Please follow the steps to integrate payment request from your app
 -  gateway endpoint : https://tecpay.in/connect.php
 -  order_id: your order id (it should be unique and atleast 10 character)
 -  pid: given merchant id
--  purpose: purpose of payment (any string)
 -  amt: amount to send
+##  Optional Fields:
+-  purpose: purpose of payment (any string)
 -  email: payer email id
+-  phone: payer phone number
 
 ## Procedure
 
 -  Step 1: append required field except gateway endpoint as arguent string
 ```sh
 ##Example string: 
-order_id=your_order_id&pid=given_merchant_id&purpose=any_purpose&amt=your_amount&email=youremail@example.com
+order_id=your_order_id&pid=given_merchant_id&purpose=any_purpose&amt=your_amount&email=youremail@example.com&phone=phone_no
 ```
 -   Step 2: base64 encode the argumet string
 ```sh
