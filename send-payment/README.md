@@ -34,21 +34,21 @@ String base64Str = base64.encode(utf8.encode(param));
 -   Step 3: Append encoded arguments into tecpay end point
 ```sh
 ##example url: 
-https://tecpay.in/checkout.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t 
+https://tecpay.in/connect.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t 
 ```
 -    step 4: Launch this url from your app as LaunchMode.externalApplication
 ```sh
 ##Kotlin Example: 
-val webIntent: Intent = Uri.parse('https://tecpay.in/checkout.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t').let { webpage ->Intent(Intent.ACTION_VIEW, webpage)}
+val webIntent: Intent = Uri.parse('https://tecpay.in/connect.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t').let { webpage ->Intent(Intent.ACTION_VIEW, webpage)}
 ```
 ```sh    
 ##Java Example: 
-Uri webpage = Uri.parse('https://tecpay.in/checkout.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t');
+Uri webpage = Uri.parse('https://tecpay.in/connect.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t');
 Intent webIntent = new Intent(Intent.ACTION_VIEW,webpage);
 ```
 ```sh 
 ##Flutter Example: 
-canLaunchUrl(Uri.parse('https://tecpay.in/checkout.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t')).then((result) => {   
+canLaunchUrl(Uri.parse('https://tecpay.in/connect.php?code=b3JkZXJfaWQ9eW91cl9vcmRlcl9pZCZwaWQ9Z2l2ZW5fbWVyY2hhbnRfaWQmcHVycG9zZT1hbnlfcHVycG9zZSZhbXQ9eW91cl9hbW91bnQmZW1haWw9eW91cmVtYWlsQGV4YW1wbGUuY29t')).then((result) => {   
 if(result==true)  
 { launchUrl(Uri.parse(url),mode: LaunchMode.externalApplication) }
 else  
