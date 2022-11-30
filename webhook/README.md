@@ -13,17 +13,44 @@ amount
 status
 post_hash
 ```
-- step 1:  compute hash (use md5 128 bit hashing algorithm to generate hash)
+
+- step 1: base64 decode post_hash
+```sh
+#PHP Example:
+ $encrypted_hash=base64_decode($_POST['post_hash']);
+```
+
+- step 2: Decrypt Hash 
+```sh
+#PHP Example:
+
+ function decrypt($ivHashCiphertext, $password) {
+    $method = "AES-256-CBC";
+    $iv = substr($ivHashCiphertext, 0, 16);
+    $hash = substr($ivHashCiphertext, 16, 32);
+    $ciphertext = substr($ivHashCiphertext, 48);
+    $key = hash('sha256', $password, true);
+
+    if (!hash_equals(hash_hmac('sha256', $ciphertext . $iv, $key, true), $hash)) return null;
+    return openssl_decrypt($ciphertext, $method, $key, OPENSSL_RAW_DATA, $iv);
+}
+
+$remote_hash=decrypt($encrypted_hash,$secret_key);
+```
+
+
+- step 3:  compute hash (use md5 128 bit hashing algorithm to generate hash)
 ```sh
 // Compute the payment hash locally In (PHP Example)
 $local_hash = md5($order_id.$amount.$status.$secret_key);  
 ```
-- step 2: verify hash (Compare hash given at request and local hash)
+- step 4: verify hash (Compare hash given at request and local hash)
 ```sh 
-if ($post_hash == $local_hash)
+if ($remote_hash == $local_hash)
 {
   // Mark the transaction as success & process the order
   // You can write code process the order herer
+  // Update your db with payment success
   $hash_status = "Hash Matched";
     
 }
@@ -32,10 +59,10 @@ if ($post_hash == $local_hash)
       // Verification failed
   }
 ```
-Step 3 : Acknowledge Back payment gateway (You should  Acknowledge back payment gateway that you logged the status of payment , otherwise you will get multiple acknowledge)
+Step 5 : Acknowledge Back payment gateway (You should  Acknowledge back payment gateway that you logged the status of payment , otherwise you will get multiple acknowledge polling )
 ```sh
-$data['hash_status']=$hash_status; // Hash Matched or Hash Mismatch 
-$data['acknowledge']=$acknowledge; // yes or no
+$data['hash_status']=$hash_status; // 'Hash Matched' or 'Hash Mismatch' 
+$data['acknowledge']=$acknowledge; // 'yes' or 'no'
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($data); // output as a json file
 ```
