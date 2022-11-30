@@ -57,6 +57,7 @@ if ($remote_hash == $local_hash)
   else
   {
       // Verification failed
+       $hash_status = "Hash Mismatch";
   }
 ```
 Step 5 : Acknowledge Back payment gateway (You should  Acknowledge back payment gateway that you logged the status of payment , otherwise you will get multiple acknowledge polling )
