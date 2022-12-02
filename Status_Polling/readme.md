@@ -69,6 +69,8 @@ post_hash // payload verification encrypted hash
 
                 
 ```sh
+
+#PHP Example:
                 
                 $data = file_get_contents("php://input");
                 $row1=json_decode($foo, true);
@@ -84,6 +86,8 @@ post_hash // payload verification encrypted hash
                 $local_hash = md5($order_id . $data['amount'] . $data['status'] . $row['secret_key']); 
 ```
 Step 5 : Verifiy response
+
+#PHP Example:
 if $local_hash equal to $remote_hash then the data is verified
 ```sh
 if($remote_hash==$local_hash)
