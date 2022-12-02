@@ -1,7 +1,8 @@
  
 ### Status Polling Integration 
 
-WebHook has to integrate on your server at some secret location, where our api confirm you the status of payment
+This API is for polling status for a particular transaction
+
 #### Required Fields
 ```sh
 secret_key = given secret key;
