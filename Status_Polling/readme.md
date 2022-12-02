@@ -52,9 +52,8 @@ $encoded_hash=base64_encode($encrypted_hash);
 ```
 - step 4: send a Post request with given url
 
-send a post request which contain  
-pid,order_id,post_hash ( as normal key value post form request) 
-you will get response after validating data
+Send a post request which contain  pid,order_id,post_hash ( as normal key value post form request) to url_of_polling_api and you will get a response after validating data
+
 ```sh 
  
 ```
@@ -73,17 +72,18 @@ post_hash // payload verification encrypted hash
 #PHP Example:
                 
                 $data = file_get_contents("php://input");
-                $row1=json_decode($foo, true);
+                $row1=json_decode($data, true);
                 $row1['order_id'];
                 $row1['upi_id'];
                 $row1['amount'];
                 $row1['webhook_acknowledged'];
                 $row1['status'];
+                $row1['post_hash'];
                 
                 
-                $encrypted_hash=base64_decode($row1['post_hash']);
-                $remote_hash = decrypt($encrypted_hash,$row['secret_key']);
-                $local_hash = md5($order_id . $data['amount'] . $data['status'] . $row['secret_key']); 
+                $encrypted_hash=base64_decode($row1['post_hash']);  // decode post hash
+                $remote_hash = decrypt($encrypted_hash,$row['secret_key']); // decrypt encrypted hash
+                $local_hash = md5($order_id . $data['amount'] . $data['status'] . $row['secret_key']);   // generate local hash
 ```
 Step 5 : Verifiy response
 
