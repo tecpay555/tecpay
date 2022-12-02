@@ -6,6 +6,7 @@ This API is for polling status for a particular transaction
 #### Required Fields
 ```sh
 secret_key = given secret key;
+url_of_polling_api ( you wil get it)
 ```
 In the POST request you will pass following datails
 ```sh 
