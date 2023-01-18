@@ -71,7 +71,8 @@ echo json_encode($data); // output as a json file
         From the webHook you will get following status
         Approved	:> Payment is Approved by our system
         Declined :>	Payment is declined by our system
-        No Matching Payment for UTR	:> We waited till timeout but no payment/matching UTR received against the payment Pending	User session in active
+        No Matching Payment for UTR	:> system waited till timeout but no payment/matching UTR received against the payment 
+        Pending	:> User session in active waiting to finish payment
         User Timed Out :>	User did'nt finished payment within the session period
 
 
