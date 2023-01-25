@@ -66,12 +66,10 @@ $ch = curl_init();
 $url=you will get api url in the call
 curl_setopt($ch, CURLOPT_URL,$url);
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,
-            "postvar1=value1&postvar2=value2&postvar3=value3");
+ 
 
 // In real life you should use something like:
-// curl_setopt($ch, CURLOPT_POSTFIELDS, 
-//          http_build_query(array('postvar1' => 'value1')));
+curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query(array('pid' => $given_pid,'order_id' => $checking_order_id,'post_hash' => $generated_post_hash)));
 
 // Receive server response ...
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
