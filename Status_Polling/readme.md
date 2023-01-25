@@ -89,7 +89,7 @@ Step 5 : Process response
 you will get a json response which is having following fields
 #
     order_id :  // order id 
-    pi_id  : // collection upi id
+    upi_id  : // collection upi id
     amount  :  // amount
     webhook_acknowledged : // web acknowledge status 0 or 1
     status : // payment approval status either Approved,Declined,Pending
