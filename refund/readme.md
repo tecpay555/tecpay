@@ -12,7 +12,7 @@ In the POST JSON body request you will pass following datails
 pid  // Merchand ID
 order_id  // Unique order id which created while passing payment request
 post_hash  // we will explain how to generate this
-amount // [optional field] required refund amount , 
+amount // [optional field] refund amount , 
 ```
 
 ### step 1 :> create hash from data
