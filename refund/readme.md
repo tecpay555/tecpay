@@ -54,13 +54,13 @@ $encrypted_hash=encrypt($local_hash,  $row['secret_key']);
 // Compute the payment hash locally In (PHP Example)
 $encoded_hash=base64_encode($encrypted_hash);   
 ```
-### step 4:. send a Post request with given url
+### step 4:. Send a Post JSON body Request to given url
 
-method: GET
-Api: given refund api
-Body : JSON data
+    method: POST
+    Api: given refund api
+    Body : JSON data
 
-``sh
+```sh
 #example request
 {
   "order_id":  "asas63e1fe596ed8",
@@ -68,15 +68,14 @@ Body : JSON data
   "post_hash":"kvDFE0f/iUuVQ4bZKufsjnUNxs4CN8Hqn6yvApqmoZQZ+h+HUidxTRvv6UxKVBnYwyNA3GamOwGFrtLslvQf20GOcFUz73wqHkvMSZdmUIXRKdbTOWm8YRzsxxXAJqpr",
   "amount":100
 }
-``
- 
-  
 ```
+ 
+   
 ### Step 5 :> Refund folowup
  You can check refund status by using status polling api by following this instructions https://github.com/tecpay555/tecpay/tree/main/Status_Polling
  
  
- ``sh
+ ```sh
  #example status polling response
  {
     "order_id": "63e1fe596ed8",
@@ -95,4 +94,4 @@ Body : JSON data
     }
 }
  
- ``
+ ```
